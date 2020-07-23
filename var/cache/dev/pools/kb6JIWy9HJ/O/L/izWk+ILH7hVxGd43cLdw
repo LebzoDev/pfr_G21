@@ -1,0 +1,54 @@
+<?php //App_Entity_Utilisateur
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Utilisateur',
+                'id',
+                'Login',
+                'password',
+                'mail',
+                'prenom',
+                'nom',
+                'profil',
+                'roles',
+                'login',
+                'username',
+                'salt',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'Login' => $o[2],
+                    'password' => $o[3],
+                    'mail' => $o[4],
+                    'prenom' => $o[5],
+                    'nom' => $o[6],
+                    'profil' => $o[7],
+                    'roles' => $o[8],
+                    'login' => $o[9],
+                    'username' => $o[10],
+                    'salt' => $o[11],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];
