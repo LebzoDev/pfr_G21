@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
- * @ApiResource
+ * @ApiResource(attributes={"pagination_items_per_page"=2})
  */
 class Utilisateur implements UserInterface
 {
