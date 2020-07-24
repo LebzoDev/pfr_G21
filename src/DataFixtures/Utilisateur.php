@@ -7,10 +7,15 @@ use App\Entity\Utilisateur as User;
 use App\Entity\Profil;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class Utilisateur extends Fixture
 {
     protected $faker;
+    private $encoder;
+    public function __construct(UserPasswordEncoderInterface $encoder){
+        $this->encoder=$encoder;
+    }
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create();
@@ -19,7 +24,8 @@ class Utilisateur extends Fixture
         for ($i = 0; $i <= 2; $i++) {
             $user = new User();
             $user->setLogin($faker->userName);
-            $user->setPassword($faker->password);
+            $password =$this->encoder->encodePassword($user,"passer");
+            $user->setPassword($password);
             $user->setPrenom($faker->firstNameMale);
             $user->setNom($faker->lastName);
             //Un objet de type profil

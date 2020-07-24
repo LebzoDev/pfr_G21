@@ -24,6 +24,7 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $Login;
+    
 
     /**
      * @ORM\Column(type="string", length=255)

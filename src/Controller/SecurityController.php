@@ -10,12 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
 
-    /**
-     * @Route("/api/utilisateurs", name="post")
-     */
-    public function nothing(){
-        return $this->render('base.html.twig');
-    }
+   
 
     /**
      * @Route("/login", name="app_login")
