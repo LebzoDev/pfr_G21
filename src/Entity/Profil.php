@@ -6,11 +6,48 @@ use App\Repository\ProfilRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *  attributes={
+ *      "pagination_items_per_page"=2,
+ *      "security"="is_granted('ROLE_ADMIN')",
+ *      "security_message"="Vous n'avez pas acces à cette ressource"
+ * },
+ * collectionOperations = {
+ *      "get","post",
+ *      "get_role_admin"={
+ *      "method"="GET",
+ *      "path"="/admin/profils",
+ *      },
+ *      "get_post_admin"={
+ *      "method"="POST",
+ *      "path"="/admin/profils",
+ *      },
+ *      "get_list_user_profil"={
+ *      "method"="GET",
+ *      "path"="/admin/profils/{id}/users",
+ *      },
+ *  },
+ * itemOperations = {
+ *      "get","put","patch",
+ *      "get_profil_id"={
+ *      "method"="GET",
+ *      "path"="/admin/profils/{id}",
+ *      },
+ *      "put_profil_id"={
+ *      "method"="PUT",
+ *      "path"="/admin/profils/{id}",
+ *      },
+ *      "delet_profil_id"={
+ *      "method"="DELETE",
+ *      "path"="/admin/profils/{id}",
+ *      },
+ *  }
+ * )
  */
 class Profil
 {

@@ -7,10 +7,12 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  * @ApiResource(attributes={"pagination_items_per_page"=2})
  */
+
 class Utilisateur implements UserInterface
 {
     /**
@@ -52,9 +54,7 @@ class Utilisateur implements UserInterface
      */
     private $profil;
 
-      /**
-     * @ORM\Column(type="json")
-     */
+    
     private $roles = [];
 
     public function getId(): ?int
@@ -102,10 +102,11 @@ class Utilisateur implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_'.$this->profil->getLibelleProfil();
 
         return array_unique($roles);
     }
+
 
     public function setRoles(array $roles): self
     {
