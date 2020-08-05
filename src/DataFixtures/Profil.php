@@ -11,6 +11,8 @@ class Profil extends Fixture
     public function load(ObjectManager $manager)
     {
        
+        $profil = new prof();
+        $profil-> setLibelleProfil('APPRENANT');  
        /* $profil = new prof();
         $profil->setLibelleProfil('ADMIN');
         $profil2 = new prof();
@@ -20,7 +22,8 @@ class Profil extends Fixture
         $manager->persist($profil2);
         $manager->persist($profil);
         $manager->persist($profil3);
-    
-    $manager->flush();*/
+    */
+        $manager->persist($profil);
+        $manager->flush();
     }
 }

@@ -42,6 +42,12 @@ use Doctrine\ORM\Mapping as ORM;
  *      "method"="PUT",
  *      "path"="/admin/profils/{id}",
  *      },
+ *       "archive_ptofil"={
+ *      "method"="PUT",
+ *      "path"="/admin/profils/{id}/archive",
+ *      "controller"="App\Controller\ProfilController",
+ *      }
+ *       ,
  *      "delet_profil_id"={
  *      "method"="DELETE",
  *      "path"="/admin/profils/{id}",
@@ -68,6 +74,11 @@ class Profil
      */
     private $utilisateur;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $archive;
+
     public function __construct()
     {
         $this->utilisateur = new ArrayCollection();
@@ -86,7 +97,6 @@ class Profil
     public function setLibelleProfil(string $libelle_Profil): self
     {
         $this->libelle_Profil = $libelle_Profil;
-
         return $this;
     }
 
@@ -117,6 +127,18 @@ class Profil
                 $utilisateur->setProfil(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getArchive(): ?bool
+    {
+        return $this->archive;
+    }
+
+    public function setArchive(bool $archive): self
+    {
+        $this->archive = $archive;
 
         return $this;
     }

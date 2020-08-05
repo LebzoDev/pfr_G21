@@ -7,11 +7,21 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
+use App\Controller\CreateMediaObjectAction;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
- * @ApiResource(attributes={"pagination_items_per_page"=2})
+ * @ApiResource(
+ *     attributes={"pagination_items_per_page"=2}
+ * )
+ * @Vich\Uploadable
  */
+
 
 class Utilisateur implements UserInterface
 {
@@ -20,42 +30,55 @@ class Utilisateur implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Login;
+    protected $Login;
     
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    protected $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $mail;
+    protected $mail;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="utilisateur")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $profil;
+    protected $profil;
 
     
-    private $roles = [];
+    protected $roles = [];
+
+    /**
+     * @ORM\Column(type="blob", nullable=true)
+     */
+    protected $photo;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $archive;
+
+
+
 
     public function getId(): ?int
     {
@@ -168,6 +191,19 @@ class Utilisateur implements UserInterface
         return $this;
     }
 
+    
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
     public function getProfil(): ?Profil
     {
         return $this->profil;
@@ -196,4 +232,18 @@ class Utilisateur implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function getArchive(): ?bool
+    {
+        return $this->archive;
+    }
+
+    public function setArchive(bool $archive): self
+    {
+        $this->archive = $archive;
+
+        return $this;
+    }
+
+
 }

@@ -24,6 +24,7 @@ class Utilisateur extends Fixture
         for ($i = 0; $i <= 2; $i++) {
             $user = new User();
             $user->setLogin($faker->userName);
+            
             $password =$this->encoder->encodePassword($user,"passer");
             $user->setPassword($password);
             $user->setPrenom($faker->firstNameMale);
