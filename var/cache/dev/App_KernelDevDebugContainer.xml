@@ -498,6 +498,21 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\CompetenceController" class="App\Controller\CompetenceController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\CompetenceController"/>
+      </call>
+    </service>
+    <service id="App\Controller\GroupeTagController" class="App\Controller\GroupeTagController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\GroupeTagController"/>
+      </call>
+    </service>
     <service id="App\Controller\ProfilController" class="App\Controller\ProfilController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -511,6 +526,13 @@
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.g9CqTPp.App\Controller\SecurityController"/>
+      </call>
+    </service>
+    <service id="App\Controller\TagController" class="App\Controller\TagController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\TagController"/>
       </call>
     </service>
     <service id="App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" public="true" autowire="true" autoconfigure="true">
@@ -530,6 +552,9 @@
     <service id="App\DataFixtures\ApprenantFixtures" class="App\DataFixtures\ApprenantFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
       <argument type="service" id="security.user_password_encoder.generic"/>
+    </service>
+    <service id="App\DataFixtures\CompetenceFixtures" class="App\DataFixtures\CompetenceFixtures" autowire="true" autoconfigure="true">
+      <tag name="doctrine.fixture.orm"/>
     </service>
     <service id="App\DataFixtures\Profil" class="App\DataFixtures\Profil" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
@@ -553,7 +578,23 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\FormateurRepository" class="App\Repository\FormateurRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\GroupCompetenceRepository" class="App\Repository\GroupCompetenceRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\GroupPromoRepository" class="App\Repository\GroupPromoRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\NiveauRepository" class="App\Repository\NiveauRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -562,6 +603,14 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ProfilSortieRepository" class="App\Repository\ProfilSortieRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\PromoRepository" class="App\Repository\PromoRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ReferentielRepository" class="App\Repository\ReferentielRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -4065,7 +4114,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.CbXaQ1B"/>
+      <argument type="service" id=".service_locator.gdMX6Nh"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5604,6 +5653,10 @@
             <argument key="groups" type="collection"/>
           </argument>
           <argument type="collection">
+            <argument key="fixture" type="service" id="App\DataFixtures\CompetenceFixtures"/>
+            <argument key="groups" type="collection"/>
+          </argument>
+          <argument type="collection">
             <argument key="fixture" type="service" id="App\DataFixtures\Profil"/>
             <argument key="groups" type="collection"/>
           </argument>
@@ -6689,12 +6742,21 @@
       <tag name="twig.extension"/>
       <argument type="service" id="Vich\UploaderBundle\Templating\Helper\UploaderHelper"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\GroupeTagController" class="App\Controller\GroupeTagController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\GroupeTagController" class="App\Controller\GroupeTagController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\GroupeTagController" class="App\Controller\GroupeTagController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProfilController" class="App\Controller\ProfilController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProfilController" class="App\Controller\ProfilController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProfilController" class="App\Controller\ProfilController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TagController" class="App\Controller\TagController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TagController" class="App\Controller\TagController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TagController" class="App\Controller\TagController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6702,6 +6764,8 @@
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\ApprenantFixtures" class="App\DataFixtures\ApprenantFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\ApprenantFixtures" class="App\DataFixtures\ApprenantFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\CompetenceFixtures" class="App\DataFixtures\CompetenceFixtures" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataFixtures\CompetenceFixtures" class="App\DataFixtures\CompetenceFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\Profil" class="App\DataFixtures\Profil" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\Profil" class="App\DataFixtures\Profil" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\ProfilSortieFixtures" class="App\DataFixtures\ProfilSortieFixtures" autowire="true" abstract="true"/>
@@ -6714,12 +6778,24 @@
     <service id=".abstract.instanceof.App\Repository\ApprenantRepository" class="App\Repository\ApprenantRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FormateurRepository" class="App\Repository\FormateurRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\FormateurRepository" class="App\Repository\FormateurRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\GroupCompetenceRepository" class="App\Repository\GroupCompetenceRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\GroupCompetenceRepository" class="App\Repository\GroupCompetenceRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\GroupPromoRepository" class="App\Repository\GroupPromoRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\GroupPromoRepository" class="App\Repository\GroupPromoRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\NiveauRepository" class="App\Repository\NiveauRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\NiveauRepository" class="App\Repository\NiveauRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProfilRepository" class="App\Repository\ProfilRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProfilRepository" class="App\Repository\ProfilRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProfilSortieRepository" class="App\Repository\ProfilSortieRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProfilSortieRepository" class="App\Repository\ProfilSortieRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromoRepository" class="App\Repository\PromoRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\PromoRepository" class="App\Repository\PromoRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReferentielRepository" class="App\Repository\ReferentielRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ReferentielRepository" class="App\Repository\ReferentielRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.WaGDpDt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6975,6 +7051,68 @@
         <argument key="loader" type="service" id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.o19tePx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="groupCompetence" type="service" id=".errored..service_locator.o19tePx.App\Entity\GroupCompetence"/>
+        <argument key="repo" type="service" id="App\Repository\CompetenceRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.m9AEmXY" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="repo" type="service" id="App\Repository\GroupCompetenceRepository"/>
+        <argument key="serialiser" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.0quEBrZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="repo" type="service" id="App\Repository\CompetenceRepository"/>
+        <argument key="serialiser" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.IZ8CcC4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="object" type="service" id=".errored..service_locator.IZ8CcC4.App\Entity\Competence"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wBA8aWt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="object" type="service" id=".errored..service_locator.wBA8aWt.App\Entity\GroupCompetence"/>
+      </argument>
+    </service>
+    <service id=".errored.4cfV7Q4" class="App\Repository\TagRepository"/>
+    <service id=".service_locator.V029P5N" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="repo" type="service" id=".errored.4cfV7Q4"/>
+        <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".errored.Onrsqj2" class="App\Repository\TagRepository"/>
+    <service id=".service_locator.ReoWKSP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="groupeTag" type="service" id=".errored..service_locator.ReoWKSP.App\Entity\GroupeTag"/>
+        <argument key="repo" type="service" id=".errored.Onrsqj2"/>
+      </argument>
+    </service>
+    <service id=".errored.abklm1d" class="App\Repository\TagRepository"/>
+    <service id=".service_locator.pZQoo.Z" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="groupeTag" type="service" id=".errored..service_locator.pZQoo.Z.App\Entity\GroupeTag"/>
+        <argument key="repo" type="service" id=".errored.abklm1d"/>
+      </argument>
+    </service>
     <service id=".service_locator.Fl4EBh8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6987,20 +7125,54 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.JEuX1kU" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".errored.W_Vk.7Q" class="App\Repository\GroupeTagRepository"/>
+    <service id=".service_locator..h8.8vE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="repo" type="service" id=".errored.W_Vk.7Q"/>
+        <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.RzvmP4X" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\CompetenceController::ArchiveGroupCompetence" type="service" id=".service_locator.wBA8aWt"/>
+        <argument key="App\Controller\CompetenceController::DesarchiveCompetence" type="service" id=".service_locator.IZ8CcC4"/>
+        <argument key="App\Controller\CompetenceController::DesarchiveGroupCompetence" type="service" id=".service_locator.wBA8aWt"/>
+        <argument key="App\Controller\CompetenceController::__invoke" type="service" id=".service_locator.IZ8CcC4"/>
+        <argument key="App\Controller\CompetenceController::addCompetence" type="service" id=".service_locator.o19tePx"/>
+        <argument key="App\Controller\CompetenceController::index" type="service" id=".service_locator.m9AEmXY"/>
+        <argument key="App\Controller\CompetenceController::indexGroup" type="service" id=".service_locator.0quEBrZ"/>
+        <argument key="App\Controller\CompetenceController::removeCompetence" type="service" id=".service_locator.o19tePx"/>
+        <argument key="App\Controller\GroupeTagController::addTag" type="service" id=".service_locator.pZQoo.Z"/>
+        <argument key="App\Controller\GroupeTagController::index" type="service" id=".service_locator.V029P5N"/>
+        <argument key="App\Controller\GroupeTagController::removeTag" type="service" id=".service_locator.ReoWKSP"/>
         <argument key="App\Controller\ProfilController::__invoke" type="service" id=".service_locator.Fl4EBh8"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.xA8Fw_."/>
+        <argument key="App\Controller\TagController::index" type="service" id=".service_locator..h8.8vE"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
         <argument key="kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
+        <argument key="App\Controller\CompetenceController:ArchiveGroupCompetence" type="service" id=".service_locator.wBA8aWt"/>
+        <argument key="App\Controller\CompetenceController:DesarchiveCompetence" type="service" id=".service_locator.IZ8CcC4"/>
+        <argument key="App\Controller\CompetenceController:DesarchiveGroupCompetence" type="service" id=".service_locator.wBA8aWt"/>
+        <argument key="App\Controller\CompetenceController:__invoke" type="service" id=".service_locator.IZ8CcC4"/>
+        <argument key="App\Controller\CompetenceController" type="service" id=".service_locator.IZ8CcC4"/>
+        <argument key="App\Controller\CompetenceController:addCompetence" type="service" id=".service_locator.o19tePx"/>
+        <argument key="App\Controller\CompetenceController:index" type="service" id=".service_locator.m9AEmXY"/>
+        <argument key="App\Controller\CompetenceController:indexGroup" type="service" id=".service_locator.0quEBrZ"/>
+        <argument key="App\Controller\CompetenceController:removeCompetence" type="service" id=".service_locator.o19tePx"/>
+        <argument key="App\Controller\GroupeTagController:addTag" type="service" id=".service_locator.pZQoo.Z"/>
+        <argument key="App\Controller\GroupeTagController:index" type="service" id=".service_locator.V029P5N"/>
+        <argument key="App\Controller\GroupeTagController:removeTag" type="service" id=".service_locator.ReoWKSP"/>
         <argument key="App\Controller\ProfilController:__invoke" type="service" id=".service_locator.Fl4EBh8"/>
         <argument key="App\Controller\ProfilController" type="service" id=".service_locator.Fl4EBh8"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.xA8Fw_."/>
+        <argument key="App\Controller\TagController:index" type="service" id=".service_locator..h8.8vE"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:terminate" type="service" id=".service_locator.beq5mCo"/>
@@ -7088,15 +7260,21 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.CbXaQ1B" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.gdMX6Nh" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AdministrateurRepository" type="service" id="App\Repository\AdministrateurRepository"/>
         <argument key="App\Repository\ApprenantRepository" type="service" id="App\Repository\ApprenantRepository"/>
         <argument key="App\Repository\CMRepository" type="service" id="App\Repository\CMRepository"/>
+        <argument key="App\Repository\CompetenceRepository" type="service" id="App\Repository\CompetenceRepository"/>
         <argument key="App\Repository\FormateurRepository" type="service" id="App\Repository\FormateurRepository"/>
+        <argument key="App\Repository\GroupCompetenceRepository" type="service" id="App\Repository\GroupCompetenceRepository"/>
+        <argument key="App\Repository\GroupPromoRepository" type="service" id="App\Repository\GroupPromoRepository"/>
+        <argument key="App\Repository\NiveauRepository" type="service" id="App\Repository\NiveauRepository"/>
         <argument key="App\Repository\ProfilRepository" type="service" id="App\Repository\ProfilRepository"/>
         <argument key="App\Repository\ProfilSortieRepository" type="service" id="App\Repository\ProfilSortieRepository"/>
+        <argument key="App\Repository\PromoRepository" type="service" id="App\Repository\PromoRepository"/>
+        <argument key="App\Repository\ReferentielRepository" type="service" id="App\Repository\ReferentielRepository"/>
         <argument key="App\Repository\UtilisateurRepository" type="service" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
@@ -7300,6 +7478,18 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\CompetenceController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CompetenceController"/>
+      <argument>App\Controller\CompetenceController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\GroupeTagController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\GroupeTagController"/>
+      <argument>App\Controller\GroupeTagController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
     <service id=".service_locator.g9CqTPp.App\Controller\ProfilController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ProfilController"/>
       <argument>App\Controller\ProfilController</argument>
@@ -7309,6 +7499,12 @@
     <service id=".service_locator.g9CqTPp.App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
       <argument>App\Controller\SecurityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\TagController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\TagController"/>
+      <argument>App\Controller\TagController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>
@@ -7513,12 +7709,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.JEuX1kU"/>
+      <argument type="service" id=".service_locator.RzvmP4X"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.JEuX1kU"/>
+      <argument type="service" id=".service_locator.RzvmP4X"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7567,6 +7763,11 @@
     </service>
     <service id=".errored..service_locator.beq5mCo.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
+    <service id=".errored..service_locator.o19tePx.App\Entity\GroupCompetence" class="App\Entity\GroupCompetence"/>
+    <service id=".errored..service_locator.IZ8CcC4.App\Entity\Competence" class="App\Entity\Competence"/>
+    <service id=".errored..service_locator.wBA8aWt.App\Entity\GroupCompetence" class="App\Entity\GroupCompetence"/>
+    <service id=".errored..service_locator.ReoWKSP.App\Entity\GroupeTag" class="App\Entity\GroupeTag"/>
+    <service id=".errored..service_locator.pZQoo.Z.App\Entity\GroupeTag" class="App\Entity\GroupeTag"/>
     <service id=".errored..service_locator.Fl4EBh8.App\Entity\Profil" class="App\Entity\Profil"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
@@ -8090,7 +8291,7 @@
     <service id="Vich\UploaderBundle\Form\Type\VichImageType" alias="vich_uploader.form.type.image" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.JEuX1kU"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.RzvmP4X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UtilisateurRepository;
@@ -76,6 +78,16 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $archive;
+
+    /**
+     * @ORM\OneToMany(targetEntity=GroupPromo::class, mappedBy="formateur")
+     */
+    private $groupPromos;
+
+    public function __construct()
+    {
+        $this->groupPromos = new ArrayCollection();
+    }
 
 
 
@@ -241,6 +253,37 @@ class Utilisateur implements UserInterface
     public function setArchive(bool $archive): self
     {
         $this->archive = $archive;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GroupPromo[]
+     */
+    public function getGroupPromos(): Collection
+    {
+        return $this->groupPromos;
+    }
+
+    public function addGroupPromo(GroupPromo $groupPromo): self
+    {
+        if (!$this->groupPromos->contains($groupPromo)) {
+            $this->groupPromos[] = $groupPromo;
+            $groupPromo->setFormateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupPromo(GroupPromo $groupPromo): self
+    {
+        if ($this->groupPromos->contains($groupPromo)) {
+            $this->groupPromos->removeElement($groupPromo);
+            // set the owning side to null (unless already changed)
+            if ($groupPromo->getFormateur() === $this) {
+                $groupPromo->setFormateur(null);
+            }
+        }
 
         return $this;
     }

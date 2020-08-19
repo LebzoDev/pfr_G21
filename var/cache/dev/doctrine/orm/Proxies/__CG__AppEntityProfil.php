@@ -66,10 +66,10 @@ class Profil extends \App\Entity\Profil implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle_Profil', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'utilisateur'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle_Profil', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'utilisateur', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'archive'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle_Profil', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'utilisateur'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle_Profil', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'utilisateur', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'archive'];
     }
 
     /**
@@ -244,6 +244,28 @@ class Profil extends \App\Entity\Profil implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUtilisateur', [$utilisateur]);
 
         return parent::removeUtilisateur($utilisateur);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getArchive(): ?bool
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArchive', []);
+
+        return parent::getArchive();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setArchive(bool $archive): \App\Entity\Profil
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArchive', [$archive]);
+
+        return parent::setArchive($archive);
     }
 
 }
