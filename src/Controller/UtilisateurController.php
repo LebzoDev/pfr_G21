@@ -45,35 +45,27 @@ class UtilisateurController extends AbstractController
     {
         //Recuperation des données
         $array = $request->request->all();
-        //dd($arpprenant);
-
         $photo = $request->files->get("photo");
         //dd($photo);
 
-        $apprenant = new Apprenant();
-        $apprenant->setPrenom($array['prenom']);
-        $apprenant->setNom($array['nom']);
-        $apprenant->setLogin($array['Login']);
-        $apprenant->setPassword($array['password']);
-        $apprenant->setStatus($array['status']);
-        $apprenant->setMail($array['mail']); 
+        $utilisateur = new User();
+        $utilisateur->setPrenom($array['prenom']);
+        $utilisateur->setNom($array['nom']);
+        $utilisateur->setLogin($array['Login']);
+        $utilisateur->setPassword($array['password']);
+        $utilisateur->setMail($array['mail']); 
 
         //$apprenant = $this->decorated->denormalize($user,Utilisateur::class,true);
         $photo = fopen($photo->getRealPath(),"rb");
         //$user->setPhoto($photo);
-        $apprenant->setPhoto($photo);
+        $utilisateur->setPhoto($photo);
         
-        /*$errors = $this->validator->validate($apprenant);
-        if (count($errors)){
-            $errors = $this->serializer->serialize($errors,"json");
-            return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
-        }*/
-        $password = $apprenant->getPassword();
+        $password = $utilisateur->getPassword();
         //dd($apprenant);
-        $apprenant->setPassword($this->encoder->encodePassword($apprenant,$password));
+        $utilisateur->setPassword($this->encoder->encodePassword($utilisateur,$password));
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($apprenant);
+        $em->persist($utilisateur);
         $em->flush();
         fclose($photo);
        
