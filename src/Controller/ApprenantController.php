@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class UtilisateurController extends AbstractController
+class ApprenantController extends AbstractController
 {
     private $encoder;
     private $serializer;
@@ -35,7 +35,7 @@ class UtilisateurController extends AbstractController
      *     path="/api/addApprenant",
      *     methods={"POST"},
      *     defaults={
-     *          "controller"="App\Controller\UtilisateurController::addApprenant",
+     *          "controller"="App\Controller\ApprenantController::addApprenant",
      *          "__api_resource_class"=Apprenant::class,
      *          "__api_collection_operation_name"="add_apprenant"
      *     }

@@ -8,6 +8,42 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     null,
     [
         'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'get',
+                    'post',
+                    'list_referentiels' => [
+                        'method' => 'GET',
+                        'path' => 'admin/referentiels',
+                    ],
+                    'list_competences_referentiel' => [
+                        'method' => 'GET',
+                        'path' => 'admin/referentiels/id/competences',
+                    ],
+                    'referentiel_addCompetences' => [
+                        'method' => 'POST',
+                        'path' => 'admin/referentiel/{id}/addCompetence',
+                    ],
+                    'referentiel_removeCompetences' => [
+                        'method' => 'POST',
+                        'path' => 'admin/referentiel/{id}/removeCompetence',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                [
+                    'get',
+                    'put',
+                    'PutReferentielArchive' => [
+                        'methods' => 'PUT',
+                        'path' => 'admin/referentiel/{id}/archive',
+                    ],
+                    'PutReferentielDesarchive' => [
+                        'methods' => 'PUT',
+                        'path' => 'admin/referentiel/{id}/desarchive',
+                    ],
+                ],
+            ],
             'repositoryClass' => [
                 1 => 'App\\Repository\\ReferentielRepository',
             ],

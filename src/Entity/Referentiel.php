@@ -9,7 +9,37 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *  collectionOperations = {
+ *      "get","post",
+ *      "list_referentiels"={
+ *      "method"="GET",
+ *      "path"="admin/referentiels",
+ *      },
+ *      "list_competences_referentiel"={
+ *      "method"="GET",
+ *      "path"="admin/referentiels/id/competences",
+ *      },
+ *      "referentiel_addCompetences"={
+ *      "method"="POST",
+ *      "path"="admin/referentiel/{id}/addCompetence"
+ *      },
+ *      "referentiel_removeCompetences"={
+ *      "method"="POST",
+ *      "path"="admin/referentiel/{id}/removeCompetence"
+ *      },
+ *  },
+ *  itemOperations = {
+ *      "get","put",
+ *      "PutReferentielArchive"={
+ *      "methods"="PUT",
+ *      "path"="admin/referentiel/{id}/archive"
+ *      },
+ *      "PutReferentielDesarchive"={
+ *      "methods"="PUT",
+ *      "path"="admin/referentiel/{id}/desarchive"
+ *      },
+ *  })
  * @ORM\Entity(repositoryClass=ReferentielRepository::class)
  */
 class Referentiel
@@ -50,6 +80,11 @@ class Referentiel
      * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="referentiel")
      */
     private $promos;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $archive;
 
     public function __construct()
     {
@@ -163,6 +198,18 @@ class Referentiel
                 $promo->setReferentiel(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getArchive(): ?bool
+    {
+        return $this->archive;
+    }
+
+    public function setArchive(bool $archive): self
+    {
+        $this->archive = $archive;
 
         return $this;
     }

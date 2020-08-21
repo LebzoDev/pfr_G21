@@ -278,3 +278,9 @@ e88fba,127.0.0.1,POST,http://127.0.0.1:8000/api/group_competences/1/addCompetenc
 9d51bf,127.0.0.1,GET,http://127.0.0.1:8000/api/group_competences/1/addCompetence,1597647251,9dd799,500
 9dd799,127.0.0.1,POST,http://127.0.0.1:8000/api/group_competences/1/addCompetence,1597647252,,500
 3723af,127.0.0.1,POST,http://127.0.0.1:8000/api/group_competences/1/addCompetence,1597648292,,200
+8d7a22,127.0.0.1,GET,http://127.0.0.1:8000/api,1597967575,,200
+80c6b9,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1597967578,da1ddc,404
+da1ddc,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1597967578,,404
+1b8bd6,127.0.0.1,GET,http://127.0.0.1:8000/api,1597967637,,200
+fef1db,127.0.0.1,GET,http://127.0.0.1:8000/api,1597968246,,200
+85c33f,127.0.0.1,GET,http://127.0.0.1:8000/api,1597968643,,200

@@ -40,31 +40,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'delete' => [
-                        'method' => 'DELETE',
-                        'input_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
                     'put' => [
                         'method' => 'PUT',
                         'input_formats' => [
@@ -90,11 +65,50 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'patch' => [
-                        'method' => 'PATCH',
+                    'PutReferentielArchive' => [
+                        'methods' => 'PUT',
+                        'path' => 'admin/referentiel/{id}/archive',
+                        'input' => null,
+                        'output' => null,
+                        'route_name' => 'PutReferentielArchive',
                         'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
                             'json' => [
-                                'application/merge-patch+json',
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'PutReferentielDesarchive' => [
+                        'methods' => 'PUT',
+                        'path' => 'admin/referentiel/{id}/desarchive',
+                        'input' => null,
+                        'output' => null,
+                        'route_name' => 'PutReferentielDesarchive',
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
                             ],
                         ],
                         'output_formats' => [
@@ -140,6 +154,118 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'post' => [
                         'method' => 'POST',
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'list_referentiels' => [
+                        'method' => 'GET',
+                        'path' => 'admin/referentiels',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'list_competences_referentiel' => [
+                        'method' => 'GET',
+                        'path' => 'admin/referentiels/id/competences',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'referentiel_addCompetences' => [
+                        'method' => 'POST',
+                        'path' => 'admin/referentiel/{id}/addCompetence',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'referentiel_removeCompetences' => [
+                        'method' => 'POST',
+                        'path' => 'admin/referentiel/{id}/removeCompetence',
+                        'input' => null,
+                        'output' => null,
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',

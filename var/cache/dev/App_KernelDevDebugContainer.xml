@@ -498,6 +498,17 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\ApprenantController" class="App\Controller\ApprenantController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="security.user_password_encoder.generic"/>
+      <argument type="service" id="serializer"/>
+      <argument type="service" id="debug.validator"/>
+      <argument type="service" id="serializer"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\ApprenantController"/>
+      </call>
+    </service>
     <service id="App\Controller\CompetenceController" class="App\Controller\CompetenceController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -519,6 +530,13 @@
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.g9CqTPp.App\Controller\ProfilController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ReferentielController" class="App\Controller\ReferentielController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\ReferentielController"/>
       </call>
     </service>
     <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
@@ -6742,6 +6760,9 @@
       <tag name="twig.extension"/>
       <argument type="service" id="Vich\UploaderBundle\Templating\Helper\UploaderHelper"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ApprenantController" class="App\Controller\ApprenantController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ApprenantController" class="App\Controller\ApprenantController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ApprenantController" class="App\Controller\ApprenantController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6751,6 +6772,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProfilController" class="App\Controller\ProfilController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProfilController" class="App\Controller\ProfilController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProfilController" class="App\Controller\ProfilController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReferentielController" class="App\Controller\ReferentielController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReferentielController" class="App\Controller\ReferentielController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ReferentielController" class="App\Controller\ReferentielController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7119,6 +7143,34 @@
         <argument key="data" type="service" id=".errored..service_locator.Fl4EBh8.App\Entity\Profil"/>
       </argument>
     </service>
+    <service id=".errored.0XGYcLE" class="App\Controller\ReferentielRepository"/>
+    <service id=".service_locator.f4U_xas" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service" id=".errored.0XGYcLE"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Re0hHMJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="referentiel" type="service" id=".errored..service_locator.Re0hHMJ.App\Entity\Referentiel"/>
+        <argument key="repo" type="service" id="App\Repository\CompetenceRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.uLYp6GS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="referentiel" type="service" id=".errored..service_locator.uLYp6GS.App\Entity\Referentiel"/>
+        <argument key="repo" type="service" id="App\Repository\CompetenceRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.atvCle0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="object" type="service" id=".errored..service_locator.atvCle0.App\Entity\Referentiel"/>
+      </argument>
+    </service>
     <service id=".service_locator.xA8Fw_." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7134,7 +7186,7 @@
         <argument key="serializer" type="service" id="serializer"/>
       </argument>
     </service>
-    <service id=".service_locator.RzvmP4X" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.5V1T.IM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CompetenceController::ArchiveGroupCompetence" type="service" id=".service_locator.wBA8aWt"/>
@@ -7149,6 +7201,12 @@
         <argument key="App\Controller\GroupeTagController::index" type="service" id=".service_locator.V029P5N"/>
         <argument key="App\Controller\GroupeTagController::removeTag" type="service" id=".service_locator.ReoWKSP"/>
         <argument key="App\Controller\ProfilController::__invoke" type="service" id=".service_locator.Fl4EBh8"/>
+        <argument key="App\Controller\ReferentielController::DesarchiveReferentiel" type="service" id=".service_locator.atvCle0"/>
+        <argument key="App\Controller\ReferentielController::__invoke" type="service" id=".service_locator.atvCle0"/>
+        <argument key="App\Controller\ReferentielController::index" type="service" id=".service_locator.uLYp6GS"/>
+        <argument key="App\Controller\ReferentielController::listCompetencesReferentiel" type="service" id=".service_locator.Re0hHMJ"/>
+        <argument key="App\Controller\ReferentielController::listReferentiels" type="service" id=".service_locator.f4U_xas"/>
+        <argument key="App\Controller\ReferentielController::removeCompetences" type="service" id=".service_locator.uLYp6GS"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.xA8Fw_."/>
         <argument key="App\Controller\TagController::index" type="service" id=".service_locator..h8.8vE"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
@@ -7171,6 +7229,13 @@
         <argument key="App\Controller\GroupeTagController:removeTag" type="service" id=".service_locator.ReoWKSP"/>
         <argument key="App\Controller\ProfilController:__invoke" type="service" id=".service_locator.Fl4EBh8"/>
         <argument key="App\Controller\ProfilController" type="service" id=".service_locator.Fl4EBh8"/>
+        <argument key="App\Controller\ReferentielController:DesarchiveReferentiel" type="service" id=".service_locator.atvCle0"/>
+        <argument key="App\Controller\ReferentielController:__invoke" type="service" id=".service_locator.atvCle0"/>
+        <argument key="App\Controller\ReferentielController" type="service" id=".service_locator.atvCle0"/>
+        <argument key="App\Controller\ReferentielController:index" type="service" id=".service_locator.uLYp6GS"/>
+        <argument key="App\Controller\ReferentielController:listCompetencesReferentiel" type="service" id=".service_locator.Re0hHMJ"/>
+        <argument key="App\Controller\ReferentielController:listReferentiels" type="service" id=".service_locator.f4U_xas"/>
+        <argument key="App\Controller\ReferentielController:removeCompetences" type="service" id=".service_locator.uLYp6GS"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.xA8Fw_."/>
         <argument key="App\Controller\TagController:index" type="service" id=".service_locator..h8.8vE"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
@@ -7478,6 +7543,12 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\ApprenantController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\ApprenantController"/>
+      <argument>App\Controller\ApprenantController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
     <service id=".service_locator.g9CqTPp.App\Controller\CompetenceController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\CompetenceController"/>
       <argument>App\Controller\CompetenceController</argument>
@@ -7493,6 +7564,12 @@
     <service id=".service_locator.g9CqTPp.App\Controller\ProfilController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ProfilController"/>
       <argument>App\Controller\ProfilController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\ReferentielController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\ReferentielController"/>
+      <argument>App\Controller\ReferentielController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>
@@ -7709,12 +7786,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.RzvmP4X"/>
+      <argument type="service" id=".service_locator.5V1T.IM"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.RzvmP4X"/>
+      <argument type="service" id=".service_locator.5V1T.IM"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7769,6 +7846,9 @@
     <service id=".errored..service_locator.ReoWKSP.App\Entity\GroupeTag" class="App\Entity\GroupeTag"/>
     <service id=".errored..service_locator.pZQoo.Z.App\Entity\GroupeTag" class="App\Entity\GroupeTag"/>
     <service id=".errored..service_locator.Fl4EBh8.App\Entity\Profil" class="App\Entity\Profil"/>
+    <service id=".errored..service_locator.Re0hHMJ.App\Entity\Referentiel" class="App\Entity\Referentiel"/>
+    <service id=".errored..service_locator.uLYp6GS.App\Entity\Referentiel" class="App\Entity\Referentiel"/>
+    <service id=".errored..service_locator.atvCle0.App\Entity\Referentiel" class="App\Entity\Referentiel"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
       <argument type="service" id=".service_locator.ubaGbXi"/>
@@ -8291,7 +8371,7 @@
     <service id="Vich\UploaderBundle\Form\Type\VichImageType" alias="vich_uploader.form.type.image" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.RzvmP4X"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.5V1T.IM"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
