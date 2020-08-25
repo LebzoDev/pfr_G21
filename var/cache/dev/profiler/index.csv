@@ -1,0 +1,6 @@
+24ccb5,127.0.0.1,GET,http://127.0.0.1:8001/apiPlatform/login_check,1598364388,94b5cc,404
+94b5cc,127.0.0.1,POST,http://127.0.0.1:8001/apiPlatform/login_check,1598364388,,404
+5c97fa,127.0.0.1,GET,http://127.0.0.1:8001/apiPlatform/login_check,1598364488,a2c94e,404
+a2c94e,127.0.0.1,POST,http://127.0.0.1:8001/apiPlatform/login_check,1598364488,,404
+7a6481,127.0.0.1,GET,http://127.0.0.1:8001/api/login_check,1598364525,e736de,400
+e736de,127.0.0.1,POST,http://127.0.0.1:8001/api/login_check,1598364525,,400
