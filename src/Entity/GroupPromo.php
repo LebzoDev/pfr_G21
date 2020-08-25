@@ -47,6 +47,11 @@ class GroupPromo
      */
     private $promo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=EtatBriefGroupe::class, inversedBy="groupPromos")
+     */
+    private $etatBriefGroupe;
+
     public function __construct()
     {
         $this->apprenants = new ArrayCollection();
@@ -127,6 +132,18 @@ class GroupPromo
     public function setPromo(?Promo $promo): self
     {
         $this->promo = $promo;
+
+        return $this;
+    }
+
+    public function getEtatBriefGroupe(): ?EtatBriefGroupe
+    {
+        return $this->etatBriefGroupe;
+    }
+
+    public function setEtatBriefGroupe(?EtatBriefGroupe $etatBriefGroupe): self
+    {
+        $this->etatBriefGroupe = $etatBriefGroupe;
 
         return $this;
     }

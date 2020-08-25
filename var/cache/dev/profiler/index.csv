@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 24ccb5,127.0.0.1,GET,http://127.0.0.1:8001/apiPlatform/login_check,1598364388,94b5cc,404
 94b5cc,127.0.0.1,POST,http://127.0.0.1:8001/apiPlatform/login_check,1598364388,,404
 5c97fa,127.0.0.1,GET,http://127.0.0.1:8001/apiPlatform/login_check,1598364488,a2c94e,404
 a2c94e,127.0.0.1,POST,http://127.0.0.1:8001/apiPlatform/login_check,1598364488,,404
 7a6481,127.0.0.1,GET,http://127.0.0.1:8001/api/login_check,1598364525,e736de,400
 e736de,127.0.0.1,POST,http://127.0.0.1:8001/api/login_check,1598364525,,400
+=======
+2ed5f1,127.0.0.1,POST,http://127.0.0.1:8000/api/login_check,1598363096,,200
+4a6b5f,127.0.0.1,GET,http://127.0.0.1:8000/api/formateurs/promo/1/briefs,1598363119,,200
+>>>>>>> 132ec3dacb62e772b2dfa7eb7de6404d040248a5

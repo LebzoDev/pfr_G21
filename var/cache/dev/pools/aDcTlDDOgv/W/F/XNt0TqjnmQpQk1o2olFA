@@ -1,0 +1,44 @@
+<?php //App_Entity_Niveau
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Niveau',
+                'id',
+                'libelle',
+                'critereDeval',
+                'groupeDaction',
+                'competence',
+                'briefs',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'libelle' => $o[2],
+                    'critereDeval' => $o[3],
+                    'groupeDaction' => $o[4],
+                    'competence' => $o[5],
+                    'briefs' => $o[6],
+                ],
+            ],
+            'groups' => [
+                5 => [
+                    'read',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];
