@@ -60,7 +60,7 @@ class GroupCompetence
     private $competences;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $archive;
 
