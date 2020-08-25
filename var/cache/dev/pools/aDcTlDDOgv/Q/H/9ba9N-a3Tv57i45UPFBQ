@@ -1,0 +1,38 @@
+<?php //App_Entity_Formateur
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Formateur',
+                'id',
+                'matricule_Formateur',
+                'briefs',
+                'matriculeFormateur',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'matricule_Formateur' => $o[2],
+                    'briefs' => $o[3],
+                    'matriculeFormateur' => $o[4],
+                ],
+            ],
+            'groups' => [
+                2 => [
+                    'read',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

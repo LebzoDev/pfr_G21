@@ -1,0 +1,53 @@
+<?php //%255BApp%255CEntity%255CBrief%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'repositoryClass' => [
+                'App\\Repository\\BriefRepository',
+            ],
+            'collectionOperations' => [
+                1 => [
+                    'get',
+                    'post',
+                    'get_briefs' => [
+                        'method' => 'GET',
+                        'path' => '/formateurs/briefs',
+                        'controller' => 'App\\Controller\\BriefController::getBriefs',
+                    ],
+                    'get_formateur_briefs_brouillons' => [
+                        'method' => 'GET',
+                        'path' => 'formateurs/{id}/briefs/brouillons',
+                        'controller' => 'App\\Controller\\BriefController::getBriefsBrouillons',
+                    ],
+                    'get_formateur_briefs_valides' => [
+                        'method' => 'GET',
+                        'path' => 'formateurs/{id}/briefs/valides',
+                        'controller' => 'App\\Controller\\BriefController::getBriefsValides',
+                    ],
+                    'getBriefsPromo' => [
+                        'method' => 'GET',
+                        'path' => '/api/formateurs/promo/{id}/briefs',
+                        'controller' => 'Brief::class',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                1 => [
+                    'security' => 'is_granted(\'ROLE_FORMATEUR\')',
+                    'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

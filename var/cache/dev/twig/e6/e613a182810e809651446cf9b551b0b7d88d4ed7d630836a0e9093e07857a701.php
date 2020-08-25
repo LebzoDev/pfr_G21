@@ -291,6 +291,6 @@ class __TwigTemplate_abdfd9ff0763f9166cb2d152b172e6bb3844da5b8d9c54f6c140d22a322
         </tbody>
     </table>
 {% endblock %}
-", "@VichUploader/Collector/mapping_collector.html.twig", "C:\\xampp\\htdocs\\pfrG21\\vendor\\vich\\uploader-bundle\\templates\\Collector\\mapping_collector.html.twig");
+", "@VichUploader/Collector/mapping_collector.html.twig", "C:\\xampp\\htdocs\\pfr_G21\\vendor\\vich\\uploader-bundle\\templates\\Collector\\mapping_collector.html.twig");
     }
 }

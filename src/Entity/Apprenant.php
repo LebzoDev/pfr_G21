@@ -41,10 +41,16 @@ class Apprenant extends Utilisateur
      */
     private $groupPromos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=LivrableAttenduApprenant::class, mappedBy="apprenant")
+     */
+    private $livrableAttenduApprenants;
+
     public function __construct()
     {
         parent::__construct();
         $this->groupPromos = new ArrayCollection();
+        $this->livrableAttenduApprenants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,6 +105,37 @@ class Apprenant extends Utilisateur
         if ($this->groupPromos->contains($groupPromo)) {
             $this->groupPromos->removeElement($groupPromo);
             $groupPromo->removeApprenant($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LivrableAttenduApprenant[]
+     */
+    public function getLivrableAttenduApprenants(): Collection
+    {
+        return $this->livrableAttenduApprenants;
+    }
+
+    public function addLivrableAttenduApprenant(LivrableAttenduApprenant $livrableAttenduApprenant): self
+    {
+        if (!$this->livrableAttenduApprenants->contains($livrableAttenduApprenant)) {
+            $this->livrableAttenduApprenants[] = $livrableAttenduApprenant;
+            $livrableAttenduApprenant->setApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLivrableAttenduApprenant(LivrableAttenduApprenant $livrableAttenduApprenant): self
+    {
+        if ($this->livrableAttenduApprenants->contains($livrableAttenduApprenant)) {
+            $this->livrableAttenduApprenants->removeElement($livrableAttenduApprenant);
+            // set the owning side to null (unless already changed)
+            if ($livrableAttenduApprenant->getApprenant() === $this) {
+                $livrableAttenduApprenant->setApprenant(null);
+            }
         }
 
         return $this;
