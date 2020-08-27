@@ -1,0 +1,39 @@
+<?php //App_Entity_EtatBriefGroupe
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\EtatBriefGroupe',
+                'id',
+                'affecte',
+                'rendu',
+                'valide',
+                'brief',
+                'groupPromo',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'affecte' => $o[2],
+                    'rendu' => $o[3],
+                    'valide' => $o[4],
+                    'brief' => $o[5],
+                    'groupPromo' => $o[6],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

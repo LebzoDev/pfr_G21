@@ -1,0 +1,51 @@
+<?php //App_Entity_ApprenantLivrablePartiel
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\ApprenantLivrablePartiel',
+                'id',
+                'dateSoumission',
+                'affecte',
+                'rendu',
+                'enRetard',
+                'aRefaire',
+                'valide',
+                'apprenant',
+                'livrablePartiel',
+                'filDeDiscussion',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'dateSoumission' => $o[2],
+                    'affecte' => $o[3],
+                    'rendu' => $o[4],
+                    'enRetard' => $o[5],
+                    'aRefaire' => $o[6],
+                    'valide' => $o[7],
+                    'apprenant' => $o[8],
+                    'livrablePartiel' => $o[9],
+                    'filDeDiscussion' => $o[10],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

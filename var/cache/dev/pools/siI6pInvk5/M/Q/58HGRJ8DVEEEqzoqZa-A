@@ -1,0 +1,36 @@
+<?php //App_Entity_LivrableAttendu
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\LivrableAttendu',
+                'id',
+                'libelle',
+                'description',
+                'brief',
+                'livrableAttenduApprenants',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'libelle' => $o[2],
+                    'description' => $o[3],
+                    'brief' => $o[4],
+                    'livrableAttenduApprenants' => $o[5],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

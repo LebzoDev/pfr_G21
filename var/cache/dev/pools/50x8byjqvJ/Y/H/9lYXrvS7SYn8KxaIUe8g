@@ -1,0 +1,49 @@
+<?php //%255BApp%255CEntity%255CApprenant%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'get',
+                    'post',
+                    'competences_acquises' => [
+                        'method' => 'GET',
+                        'path' => 'formateurs/promo/{id}/referentiel/{referentielId}/competences',
+                        'controller' => 'App\\Controller\\CompetencesAcquisesController::index',
+                    ],
+                    'competences_acquises_apprenant' => [
+                        'method' => 'GET',
+                        'path' => 'apprenant/{apprenantId}/promo/{id}/referentiel/{referentielId}/competences',
+                        'controller' => 'App\\Controller\\CompetencesAcquisesController::index1',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                [
+                    'get',
+                    'put',
+                    'patch',
+                    'reglages' => [
+                        'method' => 'PUT',
+                        'path' => '/reglages',
+                        'controller' => 'App\\Controller\\ReglagesController',
+                    ],
+                ],
+            ],
+            'repositoryClass' => [
+                1 => 'App\\Repository\\ApprenantRepository',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];
