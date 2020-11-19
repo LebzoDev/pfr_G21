@@ -15,58 +15,33 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'itemOperations' => [
                 [
-                    'get' => [
-                        'method' => 'GET',
-                        'input_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
-                    'delete' => [
-                        'method' => 'DELETE',
-                        'input_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
                     'put' => [
                         'method' => 'PUT',
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get' => [
+                        'method' => 'GET',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',
@@ -95,6 +70,37 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'input_formats' => [
                             'json' => [
                                 'application/merge-patch+json',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'modify_Brief' => [
+                        'method' => 'PUT',
+                        'path' => 'formateurs/promo/{id}/brief/{idBrief}',
+                        'controller' => 'App\\Controller\\BriefController::modify_Brief',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
                             ],
                         ],
                         'output_formats' => [
@@ -140,6 +146,250 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'post' => [
                         'method' => 'POST',
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'ajout_livrablePartiel_Brief' => [
+                        'method' => 'POST',
+                        '/formateurs/promo/{id}/brief/{briefId}/livrablepartiels',
+                        'controller' => 'App\\Controller\\ApprenantLivrablePartielController::add_livrablePartiel_Brief',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_briefs' => [
+                        'method' => 'GET',
+                        'path' => '/formateurs/briefs',
+                        'controller' => 'App\\Controller\\BriefController::getBriefs',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_formateur_briefs_brouillons' => [
+                        'method' => 'GET',
+                        'path' => 'formateurs/{id}/briefs/brouillons',
+                        'controller' => 'App\\Controller\\BriefController::getBriefsBrouillons',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_formateur_briefs_valides' => [
+                        'method' => 'GET',
+                        'path' => 'formateurs/{id}/briefs/valides',
+                        'controller' => 'App\\Controller\\BriefController::getBriefsValides',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'getBriefsPromo' => [
+                        'method' => 'GET',
+                        'path' => '/api/formateurs/promos/{id}/briefs',
+                        'controller' => 'Brief::class',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'getBriefsAssignesPromo' => [
+                        'method' => 'GET',
+                        'path' => '/api/apprenants/promos/{id}/briefs',
+                        'controller' => 'Brief::class',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'getOneBriefPromo' => [
+                        'method' => 'GET',
+                        'path' => '/api/formateurs/promo/{idPromo}/briefs/{idBrief}',
+                        'controller' => 'Brief::class',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'getGroupeBriefs' => [
+                        'method' => 'GET',
+                        'path' => '/api/formateurs/promo/{idPromo}/groupe/{idGroupe}/briefs',
+                        'controller' => 'Brief::class',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                        'input' => null,
+                        'output' => null,
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',

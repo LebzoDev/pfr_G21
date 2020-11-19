@@ -2,12 +2,26 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\LivrableAttenduApprenantRepository;
-use Doctrine\ORM\Mapping as ORM;
+use App\Controller\LivrableAttenduApprenanntController;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *  collectionOperations={
+ *      "get","post",
+ *      "post_link"={
+ *          "method"="POST",
+ *          "path"="apprenants/{id}/groupe/livrables/{idLivra}",
+ *          "controller"="App\Controller\LivrableAttenduApprenanntController::post_link",
+ *      },
+ *      "post_links"={
+ *          "method"="POST",
+ *          "path"="apprenants/{id}/groupe/{idGroup}/livrables/{idLivra}",
+ *          "controller"="App\Controller\LivrableAttenduApprenanntController::post_links",
+ *      },
+ * })
  * @ORM\Entity(repositoryClass=LivrableAttenduApprenantRepository::class)
  */
 class LivrableAttenduApprenant

@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      "get","post",
  *      "statistiques"={
  *      "method"="GET",
- *      "path"="formateurs/promo/{id}/referentiel/{referencielId}/statistiques/competences",
+ *      "path"="formateurs/promo/{id}/referentiel/{idRef}/statistiques/competences",
  *      "controller"="App\Controller\CompetencesAcquisesController::statistiques",
  *      }
  *   })

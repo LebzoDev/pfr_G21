@@ -36,6 +36,7 @@ class Utilisateur implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("affiche")
      */
     protected $Login;
     
@@ -48,18 +49,24 @@ class Utilisateur implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("post:apprenant")
+     *  @Groups("affiche")
+     * @groups("apprenant:read")
      */
     protected $mail;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("post:apprenant")
+     * @Groups("affiche")
+     * @groups("apprenant:read")
      */
     protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("post:apprenant")
+     * @Groups("affiche")
+     * @groups("apprenant:read")
      */
     protected $nom;
 

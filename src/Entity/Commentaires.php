@@ -25,18 +25,12 @@ class Commentaires
     private $description;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $createAt;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createAtTime;
 
     /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="commentaires")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $formateur;
 
@@ -59,18 +53,6 @@ class Commentaires
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getCreateAt(): ?\DateTimeInterface
-    {
-        return $this->createAt;
-    }
-
-    public function setCreateAt(?\DateTimeInterface $createAt): self
-    {
-        $this->createAt = $createAt;
 
         return $this;
     }

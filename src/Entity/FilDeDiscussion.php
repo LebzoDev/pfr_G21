@@ -2,14 +2,25 @@
 
 namespace App\Entity;
 
+use App\Entity\Commentaires;
+use Doctrine\ORM\Mapping as ORM;
+use App\Entity\ApprenantLivrablePartiel;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\FilDeDiscussionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use App\Controller\CompetencesAcquisesController;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * collectionOperations={
+ *    "get","post",
+ *     "fil_de_discussion"={
+ *      "method"="POST",
+ *      "path"="formateurs/livrablepartiels/{id}/commentaires",
+ *      "controller"="App\Controller\CompetencesAcquisesController::filDeDiscussion",
+ *      },
+ * })
  * @ORM\Entity(repositoryClass=FilDeDiscussionRepository::class)
  */
 class FilDeDiscussion

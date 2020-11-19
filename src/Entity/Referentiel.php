@@ -30,6 +30,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  *      "method"="POST",
  *      "path"="admin/referentiel/{id}/removeCompetence"
  *      },
+ *      "statistiques"={
+ *         "method"="GET",
+ *         "path"="formateurs/promo/{id}/referentiel/{referentielId}/statistiques/competences",
+ *         "controller"="App\Controller\ComptencesAcquisesController::statistiques"
+ *      },
  *  },
  *  itemOperations = {
  *      "get","put",

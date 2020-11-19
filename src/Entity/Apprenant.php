@@ -20,22 +20,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      "get","post",
  *      "competences_acquises"={
  *      "method"="GET",
- *      "path"="formateurs/promo/{id}/referentiel/{referentielId}/competences",
+ *      "path"="formateurs/promo/{id}/referentiel/{idRef}/competences",
  *      "controller"="App\Controller\CompetencesAcquisesController::index",
  *      },
- *       "competences_acquises_apprenant"={
- *      "method"="GET",
- *      "path"="apprenant/{apprenantId}/promo/{id}/referentiel/{referentielId}/competences",
- *      "controller"="App\Controller\CompetencesAcquisesController::index1",
+ *      "competences_acquises_apprenant"={
+ *       "method"="GET",
+ *       "path"="apprenant/{apprenantId}/promo/{id}/referentiel/{idRef}/competences",
+ *       "controller"="App\Controller\CompetencesAcquisesController::index1",
  *      }
  *   },
- *      itemOperations={
+ *   itemOperations={
  *      "get","put","patch",
  *      "reglages"={
- *      "method"="PUT",
- *      "path"="/reglages",
- *      "controller"="App\Controller\ReglagesController",
- *      }
+ *          "method"="PUT",
+ *          "path"="/reglages",
+ *          "controller"="App\Controller\ReglagesController",
+ *      },
+ *      
  * })
  * @ORM\Entity(repositoryClass=ApprenantRepository::class)
  */
@@ -46,12 +47,16 @@ class Apprenant extends Utilisateur
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups("post:apprenant")
+     * @Groups("affiche")
+     * @groups("apprenant:read")
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("post:apprenant")
+     * @Groups("affiche")
+     * @groups("apprenant:read")
      */
     private $status;
     /**
@@ -63,6 +68,7 @@ class Apprenant extends Utilisateur
     /**
      * @ORM\ManyToOne(targetEntity=ProfilSortie::class, inversedBy="apprenants")
      * @Groups("post:apprenant")
+     * @groups("apprenant:read")
      */
     private $profilSortie;
 
@@ -79,6 +85,7 @@ class Apprenant extends Utilisateur
     /**
      * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="apprenants")
      * @Groups("post:apprenant")
+     * @groups("apprenant:read")
      */
     private $promo;
 
@@ -98,6 +105,12 @@ class Apprenant extends Utilisateur
      */
     private $livrableAttenduApprenants;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Chat::class, mappedBy="apprenant")
+     */
+    private $chats;
+
+
     public function __construct()
     {
         parent::__construct();
@@ -106,6 +119,8 @@ class Apprenant extends Utilisateur
         $this->competencesValides = new ArrayCollection();
         $this->briefApprenants = new ArrayCollection();
         $this->livrableAttenduApprenants = new ArrayCollection();
+        $this->chats = new ArrayCollection();
+        $this->chatss = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -118,7 +133,25 @@ class Apprenant extends Utilisateur
         return $this->id;
     }
 
+    /**
+     * @see ApprenantrInterface
+     */
+    public function getRoles(): array
+    {
+        //$roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_APPRENANT';
 
+        return array_unique($roles);
+    }
+
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
     public function getStatus(): ?string
     {
         return $this->status;
@@ -306,4 +339,37 @@ class Apprenant extends Utilisateur
 
         return $this;
     }
+
+    /**
+     * @return Collection|Chat[]
+     */
+    public function getChats(): Collection
+    {
+        return $this->chats;
+    }
+
+    public function addChat(Chat $chat): self
+    {
+        if (!$this->chats->contains($chat)) {
+            $this->chats[] = $chat;
+            $chat->setApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChat(Chat $chat): self
+    {
+        if ($this->chats->contains($chat)) {
+            $this->chats->removeElement($chat);
+            // set the owning side to null (unless already changed)
+            if ($chat->getApprenant() === $this) {
+                $chat->setApprenant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

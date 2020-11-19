@@ -2,14 +2,91 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\BriefRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Tag;
+use App\Entity\Brief;
+use App\Entity\Niveau;
+use App\Entity\Ressource;
+use App\Entity\Utilisateur;
+use App\Entity\BriefMaPromo;
+use App\Entity\EtatBriefGroupe;
+use App\Entity\LivrableAttendu;
+use App\Entity\LivrablePartiel;
 use Doctrine\ORM\Mapping as ORM;
+use App\Controller\BriefController;
+use App\Repository\BriefRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\ApprenantLivrablePartielController;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * collectionOperations ={
+ *      "get","post",
+ *      "ajout_livrablePartiel_Brief"={
+ *      "method"="POST",
+ *      "/formateurs/promo/{id}/brief/{briefId}/livrablepartiels",
+ *      "controller"="App\Controller\ApprenantLivrablePartielController::add_livrablePartiel_Brief",
+ *      },
+ *      "get_briefs"={
+ *          "method"="GET",
+ *          "path"="/formateurs/briefs",
+ *          "controller"="App\Controller\BriefController::getBriefs",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CM'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource"
+ *      },
+ *      "get_formateur_briefs_brouillons"={
+ *          "method"="GET",
+ *          "path"="formateurs/{id}/briefs/brouillons",
+ *          "controller"="App\Controller\BriefController::getBriefsBrouillons",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource"
+ *      },
+ *      "get_formateur_briefs_valides"={
+ *          "method"="GET",
+ *          "path"="formateurs/{id}/briefs/valides",
+ *          "controller"="App\Controller\BriefController::getBriefsValides",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource"
+ *         },
+ *      "getBriefsPromo"={
+ *          "method"="GET",
+ *          "path"="/api/formateurs/promos/{id}/briefs",
+ *          "controller"="Brief::class",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CM'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource"
+ *       },
+ *      "getBriefsAssignesPromo"={
+ *          "method"="GET",
+ *          "path"="/api/apprenants/promos/{id}/briefs",
+ *          "controller"="Brief::class"
+ *       },
+ *      "getOneBriefPromo"={
+ *          "method"="GET",
+ *          "path"="/api/formateurs/promo/{idPromo}/briefs/{idBrief}",
+ *          "controller"="Brief::class",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CM'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource"
+ *      },
+ *      "getGroupeBriefs"={
+ *          "method"="GET",
+ *          "path"="/api/formateurs/promo/{idPromo}/groupe/{idGroupe}/briefs",
+ *          "controller"="Brief::class",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CM'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource"
+ *      },
+ * },
+ *  itemOperations={
+ *      "put","get","patch",
+ *      "modify_Brief"={
+ *           "method"="PUT",
+ *           "path"="formateurs/promo/{id}/brief/{idBrief}",
+ *           "controller"="App\Controller\BriefController::modify_Brief",
+ *           "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN'))",
+ *           "security_message"="Vous n'avez pas acces à cette ressource"
+ *      },
+ * })
  * @ORM\Entity(repositoryClass=BriefRepository::class)
  */
 class Brief
@@ -18,46 +95,54 @@ class Brief
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("brief:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $langue;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $nomBrief;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $contexte;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $modalitePedagogique;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $modaliteEvaluation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $critereEvaluation;
 
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="blob", nullable=true)
      */
     private $imagePromo;
 
@@ -68,11 +153,13 @@ class Brief
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("brief:read")
      */
     private $etat_brouillon_assigne_valide;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("brief:read")
      */
     private $createAt;
 
@@ -116,6 +203,11 @@ class Brief
      * @ORM\OneToMany(targetEntity=LivrablePartiel::class, mappedBy="brief")
      */
     private $livrablePartiels;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $close;
 
     public function __construct()
     {
@@ -480,6 +572,18 @@ class Brief
                 $livrablePartiel->setBrief(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getClose(): ?bool
+    {
+        return $this->close;
+    }
+
+    public function setClose(?bool $close): self
+    {
+        $this->close = $close;
 
         return $this;
     }

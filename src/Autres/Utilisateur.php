@@ -3,21 +3,18 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
-use App\Entity\Profil;
 use App\Entity\Utilisateur as User;
-use App\Repository\ProfilRepository;
-use Doctrine\Persistence\ObjectManager;
+use App\Entity\Profil;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class Utilisateur extends Fixture
 {
     protected $faker;
     private $encoder;
-    private $repoProfil;
-    public function __construct(UserPasswordEncoderInterface $encoder, ProfilRepository $repoProfil){
+    public function __construct(UserPasswordEncoderInterface $encoder){
         $this->encoder=$encoder;
-        $this->repoProfil = $repoProfil;
     }
     public function load(ObjectManager $manager)
     {
@@ -27,21 +24,24 @@ class Utilisateur extends Fixture
         for ($i = 0; $i <= 2; $i++) {
             $user = new User();
             $user->setLogin($faker->userName);
+            
             $password =$this->encoder->encodePassword($user,"passer");
             $user->setPassword($password);
             $user->setPrenom($faker->firstNameMale);
             $user->setNom($faker->lastName);
-            //Un objet de type profil         
+            //Un objet de type profil
+            $profil = new Profil();
             if ($i==0) {
-                $profil = $this->repoProfil->findOneBy(['libelle_Profil'=>"ADMIN"]); 
+                $profil-> setLibelleProfil('ADMIN');  
             }elseif ($i==1) {
-                $profil = $this->repoProfil->findOneBy(['libelle_Profil'=>"FORMATEUR"]); 
+                $profil-> setLibelleProfil('FORMATEUR');  
             }else {
-                $profil = $this->repoProfil->findOneBy(['libelle_Profil'=>"CM"]); 
+                $profil-> setLibelleProfil('CM');  
             }
             $user->setProfil($profil);
             $user->setMail($faker->email);
-            $user->setArchive(false);
+            
+            $manager->persist($profil);
             $manager->persist($user);
         }
         $manager->flush();

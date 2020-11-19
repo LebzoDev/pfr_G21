@@ -2,12 +2,22 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ApprenantLivrablePartielRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\ApprenantLivrablePartielController;
+use App\Repository\ApprenantLivrablePartielRepository;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * itemOperations = {
+ *      "get","put",
+ *      "modifier_ApplivrablePartiel"={
+ *      "method"="PUT",
+ *      "path"="apprenants/{id}/livrablepartiels/{livrablePartielId}",
+ *      "controller"="App\Controller\ApprenantLivrablePartielController::update_AppLivrablePartiel",
+ *      },
+ * })
  * @ORM\Entity(repositoryClass=ApprenantLivrablePartielRepository::class)
  */
 class ApprenantLivrablePartiel

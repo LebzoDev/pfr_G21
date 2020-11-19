@@ -79,7 +79,7 @@ class CompetenceController extends AbstractController
         $competence->addGroupCompetence($groupCompetence);
         $manager->persist($competence);
         //$manager->flush();
-        dd($id,$data,$competence,$groupCompetence);
+        //dd($id,$data,$competence,$groupCompetence);
     }
 
     /**

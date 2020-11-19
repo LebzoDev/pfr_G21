@@ -2,12 +2,23 @@
 
 namespace App\Entity;
 
+use App\Entity\Apprenant;
+use App\Entity\BriefMaPromo;
+use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BriefApprenantRepository;
-use Doctrine\ORM\Mapping as ORM;
+use App\Controller\CompetencesAcquisesController;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *   itemOperations={
+ *      "get","put","patch",
+ *      "apprenant_nombre"={
+ *          "method"="GET",
+ *          "path"="apprenants/{id}/promo/{idPromo}/referentiel/{idRef}/statistiques/briefs",
+ *          "controller"="App\Controller\CompetencesAcquisesController::statistique_nombre",
+ *      },
+ * })
  * @ORM\Entity(repositoryClass=BriefApprenantRepository::class)
  */
 class BriefApprenant

@@ -13,7 +13,50 @@ use ApiPlatform\Core\Serializer\Filter\GroupFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *  collectionOperations={
+ *      "get","post",
+ *      "Add_ProfilSortie"={
+ *          "method"="POST",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CM'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource",
+ *          "path"="admin/profilsorties",
+ *          "controller"="App\Controller\ProfilSortieController::addProfilSortie"
+ *      },
+ *      "Affiche_ProfilSortie"={
+ *          "method"="GET",
+ *          "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CM'))",
+ *          "security_message"="Vous n'avez pas acces à cette ressource",
+ *          "path"="admin/profilsorties",
+ *          "controller"="App\Controller\ProfilSortieController::afficheProfilSortie"
+ *      },
+ *      "Affiche_ProfilSortie_Promo"={
+ *      "method"="GET",
+ *      "path"="admin/promo/{id}/profilsorties",
+ *      "controller"="App\Controller\ProfilSortieController::afficheProfilSortiePromo"
+ *      },
+ *      "Affiche_Apprenant_ProfilSortie"={
+ *      "method"="GET",
+ *      "path"="/admin/profilsorties/{id}",
+ *      "controller"="App\Controller\ProfilSortieController::afficheApprenantsProfilSortie"
+ *      },
+ *      "Affiche_Apprenant_ProfilSortie_Promo"={
+ *      "method"="GET",
+ *      "path"="/admin/promo/{id}/profilsortie/{idp}",
+ *      "controller"="App\Controller\ProfilSortieController::afficheApprenantsProfilSortiePromo"
+ *      }
+ * },
+ *     itemOperations={
+ *      "put","get",
+ *      "ModifierProfilSortie"={
+ *      "security"="(is_granted('ROLE_FORMATEUR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CM'))",
+ *       "security_message"="Vous n'avez pas acces à cette ressource",
+ *      "method"="PUT",
+ *      "path"="/admin/profilsortie/{id}",
+ *      "controller"="App\Controller\ProfilSortieController::modifierProfilSortie"
+ * }
+ * }
+ * )
  * @ORM\Entity(repositoryClass=ProfilSortieRepository::class)
  * 
  */
@@ -23,12 +66,13 @@ class ProfilSortie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("read")
+     * @Groups("affiche")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("affiche")
      */
     private $libelleProfilSortie;
 

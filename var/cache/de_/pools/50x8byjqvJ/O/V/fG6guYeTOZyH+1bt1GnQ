@@ -1,0 +1,93 @@
+<?php //%255BApp%255CEntity%255CBrief%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'get',
+                    'post',
+                    'ajout_livrablePartiel_Brief' => [
+                        'method' => 'POST',
+                        '/formateurs/promo/{id}/brief/{briefId}/livrablepartiels',
+                        'controller' => 'App\\Controller\\ApprenantLivrablePartielController::add_livrablePartiel_Brief',
+                    ],
+                    'get_briefs' => [
+                        'method' => 'GET',
+                        'path' => '/formateurs/briefs',
+                        'controller' => 'App\\Controller\\BriefController::getBriefs',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                    ],
+                    'get_formateur_briefs_brouillons' => [
+                        'method' => 'GET',
+                        'path' => 'formateurs/{id}/briefs/brouillons',
+                        'controller' => 'App\\Controller\\BriefController::getBriefsBrouillons',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                    ],
+                    'get_formateur_briefs_valides' => [
+                        'method' => 'GET',
+                        'path' => 'formateurs/{id}/briefs/valides',
+                        'controller' => 'App\\Controller\\BriefController::getBriefsValides',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                    ],
+                    'getBriefsPromo' => [
+                        'method' => 'GET',
+                        'path' => '/api/formateurs/promos/{id}/briefs',
+                        'controller' => 'Brief::class',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                    ],
+                    'getBriefsAssignesPromo' => [
+                        'method' => 'GET',
+                        'path' => '/api/apprenants/promos/{id}/briefs',
+                        'controller' => 'Brief::class',
+                    ],
+                    'getOneBriefPromo' => [
+                        'method' => 'GET',
+                        'path' => '/api/formateurs/promo/{idPromo}/briefs/{idBrief}',
+                        'controller' => 'Brief::class',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                    ],
+                    'getGroupeBriefs' => [
+                        'method' => 'GET',
+                        'path' => '/api/formateurs/promo/{idPromo}/groupe/{idGroupe}/briefs',
+                        'controller' => 'Brief::class',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                [
+                    'put',
+                    'get',
+                    'patch',
+                    'modify_Brief' => [
+                        'method' => 'PUT',
+                        'api/formateurs/promo/{id}/brief/{idBrief}',
+                        'controller' => 'App\\Controller\\BriefController::modify_Brief',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\') or is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces à cette ressource',
+                    ],
+                ],
+            ],
+            'repositoryClass' => [
+                1 => 'App\\Repository\\BriefRepository',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];
